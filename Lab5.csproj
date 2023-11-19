@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{316E06F3-AF7E-476A-8388-54C677E3A685}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Lab4</RootNamespace>
-    <AssemblyName>Lab4</AssemblyName>
+    <RootNamespace>Lab5</RootNamespace>
+    <AssemblyName>Lab5</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -69,16 +69,16 @@
     <Compile Include="RectShape.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="ShapeObjectsEditor.cs" />
-    <Compile Include="Lab4.cs">
+    <Compile Include="Lab5.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab4.Designer.cs">
-      <DependentUpon>Lab4.cs</DependentUpon>
+    <Compile Include="Lab5.Designer.cs">
+      <DependentUpon>Lab5.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Lab4.resx">
-      <DependentUpon>Lab4.cs</DependentUpon>
+    <EmbeddedResource Include="Lab5.resx">
+      <DependentUpon>Lab5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

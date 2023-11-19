@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
-namespace Lab4
+namespace Lab5
 {
 
     public class ShapeObjectsEditor

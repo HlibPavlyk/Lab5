@@ -7,15 +7,15 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-namespace Lab4
+namespace Lab5
 {
-    public partial class Lab4 : Form
+    public partial class Lab5 : Form
     {
         private ToolStripMenuItem selectedMenuItem = null;
         private ToolStripButton selectedToolButton = null;
         ShapeObjectsEditor shapeObjectsEditor = new ShapeObjectsEditor();
 
-        public Lab4()
+        public Lab5()
         {
             InitializeComponent();
             shapeObjectsEditor.SetCurrentShape = new PointShape(Point.Empty);
