@@ -19,6 +19,19 @@ namespace Lab5
         private Color borderColor;
         private DashStyle penStyle;
 
+        public override Point StartPoint
+        {
+            get { return new Point((startPointFront.X + width/2), (startPointFront.Y + width/2)); }
+        }
+        public override Point? EndPoint
+        {
+            get { return new Point((startPointFront.X + width), (startPointFront.Y + width)); }
+        }
+        public override Color Color
+        {
+            get { return borderColor; }
+            set { borderColor = value; }
+        }
         public CubeShape(Point centerPoint, Point endPoint, Color? borderColor = null, 
             DashStyle penStyle = DashStyle.Solid)
         {

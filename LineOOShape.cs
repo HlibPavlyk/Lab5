@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace Lab5
 {
@@ -20,6 +21,19 @@ namespace Lab5
         private Color fillColor;
         private DashStyle penStyle;
 
+        public override Point StartPoint
+        {
+            get { return startPoint; }
+        }
+        public override Point? EndPoint
+        {
+            get { return endPoint; }
+        }
+        public override Color Color
+        {
+            get { return borderColor; }
+            set { borderColor = value; }
+        }
 
         public LineOOShape(Point startPoint, Point endPoint, int radius = 10, Color? borderColor = null,
             Color? fillColor = null, DashStyle penStyle = DashStyle.Solid)
@@ -46,6 +60,8 @@ namespace Lab5
         {
             endPoint = endPoint ?? Point.Empty;
             lineOOComponents.Clear();
+            this.endPoint = (Point)endPoint;
+            this.startPoint = startPoint;
 
             int directionX = endPoint.Value.X - startPoint.X;
             int directionY = endPoint.Value.Y - startPoint.Y;

@@ -13,6 +13,8 @@ namespace Lab5
 
     public class ShapeObjectsEditor
     {
+        private static readonly ShapeObjectsEditor instance = new ShapeObjectsEditor();
+
         private bool ifButtonClicked = false;
         private Point startPoint;
         private Point endPoint;
@@ -21,7 +23,22 @@ namespace Lab5
         private List<Shape> stepShapes = new List<Shape>();
         private Shape currentRubberShape = null;
         private Shape currentShape = null;
+        private Shape selectedShape = null;
 
+        private ChangedEventHandler shapesChangedHandler;
+
+        public event ChangedEventHandler ShapesChangedEvent
+        {
+            add { shapesChangedHandler += value; }
+            remove { shapesChangedHandler -= value; }
+        }
+
+        private ShapeObjectsEditor() { }
+
+        public static ShapeObjectsEditor Instance
+        {
+            get { return instance; }
+        }
         public Shape SetCurrentShape
         {
             set { currentShape = value; }
@@ -30,13 +47,20 @@ namespace Lab5
         {
             set { currentRubberShape = value; }
         }
+        public List<Shape> Shapes 
+        { 
+            get { return shapes; } 
+        }
 
-        private void AddShape(Shape shape)
+
+        public void AddShape(Shape shape)
         {
             if (shapes.Count == stepShapes.Count)
             {
                 shapes.Add(shape);
                 stepShapes = new List<Shape>(shapes);
+                shapesChangedHandler?.Invoke();
+
             }
             else
             {
@@ -97,14 +121,18 @@ namespace Lab5
             }
 
             currentRubberShape?.Show(graphics);
+            selectedShape?.Show(graphics);
         }
 
-        public void OnClear(object sender, EventArgs e)
+        public void OnClear()
         {
             stepShapes.Clear();
+            shapes.Clear();
 
             if (currentShape.GetType() != typeof(PointShape))
                 currentRubberShape.SetPosition(Point.Empty, Point.Empty);
+
+            shapesChangedHandler?.Invoke();
         }
 
         public void OnStepBack(object sender, EventArgs e)
@@ -125,5 +153,34 @@ namespace Lab5
             }
         }
 
+        public void ShowSelectedShape(int shapeNumber)
+        {
+            selectedShape = shapes[shapeNumber].CreateCopy();
+            selectedShape.Color = Color.Red;
+        }
+
+        public void HideSelectedShape()
+        {
+            selectedShape = null;
+        }
+
+        public void DeleteSelectedShape(int shapeNumber)
+        {
+            DeleteShapeAtPosition(shapeNumber);
+        }
+
+        private void DeleteShapeAtPosition(int shapeIndex)
+        {
+            if (shapeIndex < shapes.Count)
+                shapes.RemoveAt(shapeIndex);
+
+            if (shapeIndex < stepShapes.Count)
+                stepShapes.RemoveAt(shapeIndex);
+
+            if (currentShape.GetType() != typeof(PointShape))
+                currentRubberShape.SetPosition(Point.Empty, Point.Empty);
+
+            shapesChangedHandler?.Invoke();
+        }
     }
 }

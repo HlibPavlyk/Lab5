@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,20 @@ namespace Lab5
         private Point point;
         private Color color;
 
-        
+        public override Point StartPoint
+        {
+            get { return point; }
+        }
+        public override Point? EndPoint
+        {
+            get { return null; }
+        }
+        public override Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
         public PointShape(Point point, Color? color = null)
         {
             SetPosition(point);

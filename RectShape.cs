@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,20 @@ namespace Lab5
         private Color borderColor;
         private Color fillColor;
         private DashStyle penStyle;
-        
+
+        public override Point StartPoint
+        {
+            get { return startPoint; }
+        }
+        public override Point? EndPoint
+        {
+            get { return new Point((startPoint.X + width), (startPoint.Y + hight)); }
+        }
+        public override Color Color
+        {
+            get { return borderColor; }
+            set { borderColor = value; }
+        }
         public RectShape(Point startPoint, Point endPoint, Color? borderColor = null,
             Color? fillColor = null, DashStyle penStyle = DashStyle.Solid)
         {

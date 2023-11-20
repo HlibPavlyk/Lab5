@@ -17,7 +17,19 @@ namespace Lab5
         private Color fillColor;
         private DashStyle penStyle;
 
-        
+        public override Point StartPoint
+        {
+            get { return new Point((startPoint.X + width/2), (startPoint.Y + hight/2)); }
+        }
+        public override Point? EndPoint
+        {
+            get { return new Point((startPoint.X + width), (startPoint.Y + hight)); }
+        }
+        public override Color Color
+        {
+            get { return borderColor; }
+            set { borderColor = value; }
+        }
         public EllipseShape(Point centertPoint, Point endPoint, Color? borderColor = null,
             Color? fillColor = null, DashStyle penStyle = DashStyle.Solid)
         {

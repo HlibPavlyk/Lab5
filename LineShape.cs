@@ -15,7 +15,20 @@ namespace Lab5
         private Color color;
         private DashStyle penStyle;
 
-       
+        public override Point StartPoint
+        {
+            get { return startPoint; }
+        }
+        public override Point? EndPoint
+        {
+            get { return endPoint; }
+        }
+        public override Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
         public LineShape(Point startPoint, Point endPoint, Color? color = null,
             DashStyle penStyle = DashStyle.Solid)
         {
